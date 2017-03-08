@@ -7,9 +7,9 @@
 
 <body>
 <?php
+	require_once('classes/BD.class.php');
 $pegaUser = BD::conn()->prepare("SELECT * FROM `usuarios` WHERE `email` = ?");
 	session_start();
-	require_once('classes/BD.class.php');
 	$pegaUser->execute(array($_SESSION['email_logado']));
 	$dadosUser = $pegaUser->fetch();
 $nomePessoa = ($_POST['nome'] . ' '. $_POST['snome'] == ' ') ? $dadosUser['nome'] : $_POST['nome'] . ' '. $_POST['snome'];
